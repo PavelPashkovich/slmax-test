@@ -2,7 +2,7 @@
 require_once 'connect.php';
 require_once 'User.php';
 
-//$user = new User(21, 'Steve', 'Smith', '1982-11-11', 0, 'Minsk');
+$user = new User(22, 'Steve', 'Smith', '1982-11-11', 0, 'Minsk');
 
 
 //    $user->showUser(21);
