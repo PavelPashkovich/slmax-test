@@ -50,9 +50,9 @@ class User
             $sql = "INSERT INTO `users` (`id`, `name`, `last_name`, `birthday`, `gender`, `city_of_birth`) 
                                  VALUES ('$this->id', '$this->name', '$this->last_name', '$this->birthday', '$this->gender', '$this->city_of_birth')";
             if (mysqli_query($connection, $sql)) {
-                return 'User added!';
+                echo 'User added!';
             } else {
-                return "Ошибка: " . mysqli_error($connection);
+                echo "Ошибка: " . mysqli_error($connection);
             }
         }
     }
@@ -66,12 +66,12 @@ class User
             if (mysqli_num_rows($check_user) > 0) {
                 $user = mysqli_fetch_assoc($check_user);
                 $gender = !$user['gender'] ? 'муж' : 'жен';
-                return 'Имя и Фамилия: ' . $user['name'] . ' ' . $user['last_name'] . "<br>" .
+                echo 'Имя и Фамилия: ' . $user['name'] . ' ' . $user['last_name'] . "<br>" .
                      'Дата рождения: ' . $user['birthday'] . "<br>" .
                      'Пол: ' . $gender . "<br>" .
                      'Город рождения: ' . $user['city_of_birth'];
             } else {
-                return "Ошибка: Пользователь с указанным id не найден.";
+                echo "Ошибка: Пользователь с указанным id не найден.";
             }
         }
     }
@@ -82,9 +82,9 @@ class User
         if (!empty($connection)) {
             $sql = "DELETE FROM `users` WHERE `id` = '$id'";
             if (mysqli_query($connection, $sql)) {
-                return 'User deleted!';
+                echo 'User deleted!';
             } else {
-                return "Ошибка: " . mysqli_error($connection);
+                echo "Ошибка: " . mysqli_error($connection);
             }
         }
     }

@@ -30,10 +30,26 @@ class Users
         print_r($users);
         echo "</pre>";
     }
+
+    public function deleteUsers($connection)
+    {
+        if (!empty($connection)) {
+            foreach ($this->usersIds as $id) {
+                $sql = "DELETE FROM `users` WHERE `id` = '$id'";
+                if (mysqli_query($connection, $sql)) {
+                    echo 'Users deleted!';
+                } else {
+                    echo "Ошибка: " . mysqli_error($connection);
+                }
+            }
+        }
+        $this->getUsers($connection);
+    }
 }
 
-$users = new Users([21, 22]);
-if (!empty($connection)) {
-    $users->getUsers($connection);
-}
+
+
+
+
+
 
